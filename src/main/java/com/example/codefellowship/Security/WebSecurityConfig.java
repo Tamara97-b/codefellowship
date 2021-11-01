@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder;
     }
@@ -31,23 +31,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().disable().csrf().disable()
+        http.cors().disable()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login*").permitAll()
-                .antMatchers("/signup*").permitAll()
-                .antMatchers("/style.css").permitAll()
-                .antMatchers("/").permitAll()
+                .antMatchers("/login", "/signup", "/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/")
-                .failureUrl("/login")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/error")
                 .and()
                 .logout()
                 .logoutUrl("/perform_logout")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID");
     }
 }
