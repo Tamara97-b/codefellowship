@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+<body style="background-color: #6B7AA1">
+<header>
+    <div th:replace="frag/topnav :: topnav"></div>
+</header>
+<main>
+
+    <h2 style="position: absolute; top: 70px; left: 30px" class="mainText">Feed page</h2>
+    <div th:each="user : ${postList}">
+    <ul th:each="post : ${user.postList}" class="list-group" style="width: 70%; margin: auto; margin-top: 30px">
+        <li class="list-group-item disabled">Post :<span th:text="${post.body}"></span><br /></li>
+        <li class="list-group-item disabled">Time :<span th:text="${post.createdAt}"></span><br /></li>
+        <li class="list-group-item disabled">
+            Posted By :<span style="display: inline-block" th:text="${user.username}"></span>
+
+            <br />
+        </li>
+        <br />
+    </ul>
+        </div>
+</main>
+</body>
+</html>
