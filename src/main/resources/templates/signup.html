@@ -1,28 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 </head>
-<body>
-<header th:insert="header.html :: header">
-    
+<body style="background-color: #6B7AA1">
+<header>
+    <div th:replace="frag/topnav :: topnav"></div>
 </header>
-<form action="/signup" method="post">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-    <label for="firstName">firstName</label>
-    <input type="text" name="firstName" id="firstName">
-    <label for="lastName">lastName</label>
-    <input type="text" name="lastName" id="lastName">
-    <label for="dateOfBirth">dateOfBirth</label>
-    <input type="text" name="dateOfBirth" id="dateOfBirth">
-    <label for="bio">bio</label>
-    <input type="text" name="bio" id="bio">
-    <input type="submit">
+<form method="POST" action="/signup" style="width: 50%; margin: auto">
+    <div class="form-group">
+        <label for="username">User Name</label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="User Name" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" class="form-control" placeholder="password" />
+    </div>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" />
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth">Date Of Birth</label>
+        <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control" placeholder="Date Of Birth" />
+    </div>
+    <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea name="bio" class="form-control" id="bio" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Sign up</button>
 </form>
-
 </body>
 </html>

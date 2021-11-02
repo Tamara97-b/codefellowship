@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+<body style="background-color: #6B7AA1">
+<header>
+    <div th:replace="frag/topnav :: topnav"></div>
+</header>
+<main>
+    <img style="width: 100%; position: relative" class="HeroImg" src="https://www.goodcore.co.uk/blog/wp-content/uploads/2019/08/coding-vs-programming-2.jpg" alt="dev" />
+    <h2 style="position: absolute; top: 70px; left: 30px" class="mainText">WELCOME TO CODE FELLOWS SHIP</h2>
+    <ul th:each="post : ${postList}" class="list-group" style="width: 70%; margin: auto; margin-top: 30px">
+        <li class="list-group-item disabled">Post :<span th:text="${post.body}"></span><br /></li>
+        <li class="list-group-item disabled">Time :<span th:text="${post.createdAt}"></span><br /></li>
+        <li class="list-group-item disabled">
+            Posted By :<span style="display: inline-block" th:text="${post.user.username}"></span>
+            <form style="float: right" th:action="@{/follow(id=${post.getUser().getId()})}" method="post">
+                <button class="btn btn-warning" type="submit">Follow</button>
+            </form>
+            <br />
+        </li>
+        <br />
+    </ul>
+</main>
+</body>
+</html>
